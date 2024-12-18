@@ -1,0 +1,936 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="SAP__common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="SAP__measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CORE',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Core.V1" Alias="SAP__core"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="SAP__capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="SAP__aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="SAP__validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="SAP__UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HTML5',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.HTML5.v1" Alias="SAP__HTML5"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PDF',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.PDF.v1" Alias="SAP__PDF"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_SESSION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Session.v1" Alias="SAP__session"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HIERARCHY',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Hierarchy.v1" Alias="SAP__hierarchy"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="com.sap.gateway.srvd.scs2.ui_countrygovtp.v0001" Alias="SAP__self">
+            <Annotation Term="SAP__core.SchemaVersion" String="1.0.0"/>
+            <EntityType Name="CountryTextType">
+                <Key>
+                    <PropertyRef Name="MasterDataChangeProcess"/>
+                    <PropertyRef Name="MDChgProcessSrceSystem"/>
+                    <PropertyRef Name="MDChgProcessSrceObject"/>
+                    <PropertyRef Name="Language"/>
+                </Key>
+                <Property Name="MasterDataChangeProcess" Type="Edm.String" Nullable="false" MaxLength="12"/>
+                <Property Name="MDChgProcessSrceSystem" Type="Edm.String" Nullable="false" MaxLength="60"/>
+                <Property Name="MDChgProcessSrceObject" Type="Edm.String" Nullable="false" MaxLength="60"/>
+                <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="MDChgProcessStep" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="CountryShortName" Type="Edm.String" Nullable="false" MaxLength="15"/>
+                <Property Name="NationalityName" Type="Edm.String" Nullable="false" MaxLength="15"/>
+                <Property Name="CountryName" Type="Edm.String" Nullable="false" MaxLength="50"/>
+                <Property Name="NationalityLongName" Type="Edm.String" Nullable="false" MaxLength="50"/>
+                <Property Name="__EntityControl" Type="com.sap.gateway.srvd.scs2.ui_countrygovtp.v0001.EntityControl"/>
+                <Property Name="SAP__Messages" Type="Collection(com.sap.gateway.srvd.scs2.ui_countrygovtp.v0001.SAP__Message)" Nullable="false"/>
+                <NavigationProperty Name="_Country" Type="com.sap.gateway.srvd.scs2.ui_countrygovtp.v0001.CountryType" Nullable="false" Partner="_CountryText">
+                    <ReferentialConstraint Property="MasterDataChangeProcess" ReferencedProperty="MasterDataChangeProcess"/>
+                    <ReferentialConstraint Property="MDChgProcessSrceSystem" ReferencedProperty="MDChgProcessSrceSystem"/>
+                    <ReferentialConstraint Property="MDChgProcessSrceObject" ReferencedProperty="MDChgProcessSrceObject"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="ChangeProcessType">
+                <Key>
+                    <PropertyRef Name="MasterDataChangeProcess"/>
+                    <PropertyRef Name="MDchgProcessStep"/>
+                    <PropertyRef Name="MDChgProcessSrceSystem"/>
+                    <PropertyRef Name="MDChgProcessSrceObject"/>
+                </Key>
+                <Property Name="MasterDataChangeProcess" Type="Edm.String" Nullable="false" MaxLength="12"/>
+                <Property Name="MDchgProcessStep" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="MDChgProcessSrceSystem" Type="Edm.String" Nullable="false" MaxLength="60"/>
+                <Property Name="MDChgProcessSrceObject" Type="Edm.String" Nullable="false" MaxLength="60"/>
+                <Property Name="MasterDataChangeProcessUUID" Type="Edm.Guid"/>
+                <Property Name="MDChgProcessDescription" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="MDChgProcessTypeID" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="MDChgProcessTypeDesc" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="MDChgProcessGoal" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="MDChgProcessStatus" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="MDChgProcessSrceObjectTypeCode" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="MDChgProcessRequestor" Type="Edm.String" Nullable="false" MaxLength="12"/>
+                <Property Name="MDChgProcessIsStarted" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="MDChgProcessIsFinalized" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="MDChgProcessLastStepIsFinished" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="MDChgProcessCurrentStepNumber" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="MDChgProcessIsErased" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="MDChgProcessStepWrkflwOvrlDcsn" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="MDChgProcessStepWrkflwSts" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="NumberOfAttachments" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="MDChgProcDspAttchIsAllowed" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="__EntityControl" Type="com.sap.gateway.srvd.scs2.ui_countrygovtp.v0001.EntityControl"/>
+                <Property Name="SAP__Messages" Type="Collection(com.sap.gateway.srvd.scs2.ui_countrygovtp.v0001.SAP__Message)" Nullable="false"/>
+                <NavigationProperty Name="_Country" Type="com.sap.gateway.srvd.scs2.ui_countrygovtp.v0001.CountryType" Nullable="false" Partner="_Process">
+                    <ReferentialConstraint Property="MasterDataChangeProcess" ReferencedProperty="MasterDataChangeProcess"/>
+                    <ReferentialConstraint Property="MDChgProcessSrceSystem" ReferencedProperty="MDChgProcessSrceSystem"/>
+                    <ReferentialConstraint Property="MDChgProcessSrceObject" ReferencedProperty="MDChgProcessSrceObject"/>
+                </NavigationProperty>
+                <NavigationProperty Name="_FurtherObjects" Type="Collection(com.sap.gateway.srvd.scs2.ui_countrygovtp.v0001.CountryType)"/>
+            </EntityType>
+            <EntityType Name="CountryType">
+                <Key>
+                    <PropertyRef Name="MasterDataChangeProcess"/>
+                    <PropertyRef Name="MDChgProcessSrceSystem"/>
+                    <PropertyRef Name="MDChgProcessSrceObject"/>
+                </Key>
+                <Property Name="MasterDataChangeProcess" Type="Edm.String" Nullable="false" MaxLength="12"/>
+                <Property Name="MDChgProcessSrceSystem" Type="Edm.String" Nullable="false" MaxLength="60"/>
+                <Property Name="MDChgProcessSrceObject" Type="Edm.String" Nullable="false" MaxLength="60"/>
+                <Property Name="MDChgProcessStep" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="Country" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="CountryISOCode" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="CountryThreeLetterISOCode" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="CountryThreeDigitISOCode" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="IsEuropeanUnionMember" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="CountryTextInLogonLanguage" Type="Edm.String" Nullable="false" MaxLength="50"/>
+                <Property Name="__CreateByAssociationControl" Type="com.sap.gateway.srvd.scs2.ui_countrygovtp.v0001.CountryCbAControl"/>
+                <Property Name="__EntityControl" Type="com.sap.gateway.srvd.scs2.ui_countrygovtp.v0001.EntityControl"/>
+                <Property Name="SAP__Messages" Type="Collection(com.sap.gateway.srvd.scs2.ui_countrygovtp.v0001.SAP__Message)" Nullable="false"/>
+                <NavigationProperty Name="_CountryText" Type="Collection(com.sap.gateway.srvd.scs2.ui_countrygovtp.v0001.CountryTextType)" Partner="_Country">
+                    <OnDelete Action="Cascade"/>
+                </NavigationProperty>
+                <NavigationProperty Name="_Process" Type="com.sap.gateway.srvd.scs2.ui_countrygovtp.v0001.ChangeProcessType" Nullable="false" Partner="_Country">
+                    <OnDelete Action="Cascade"/>
+                </NavigationProperty>
+            </EntityType>
+            <ComplexType Name="CountryCbAControl">
+                <Property Name="_CountryText" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="_Process" Type="Edm.Boolean" Nullable="false"/>
+            </ComplexType>
+            <ComplexType Name="EntityControl">
+                <Property Name="Deletable" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="Updatable" Type="Edm.Boolean" Nullable="false"/>
+            </ComplexType>
+            <ComplexType Name="SAP__Message">
+                <Property Name="code" Type="Edm.String" Nullable="false"/>
+                <Property Name="message" Type="Edm.String" Nullable="false"/>
+                <Property Name="target" Type="Edm.String"/>
+                <Property Name="additionalTargets" Type="Collection(Edm.String)" Nullable="false"/>
+                <Property Name="transition" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="numericSeverity" Type="Edm.Byte" Nullable="false"/>
+                <Property Name="longtextUrl" Type="Edm.String"/>
+            </ComplexType>
+            <EntityContainer Name="Container">
+                <EntitySet Name="ChangeProcess" EntityType="com.sap.gateway.srvd.scs2.ui_countrygovtp.v0001.ChangeProcessType">
+                    <NavigationPropertyBinding Path="_Country" Target="Country"/>
+                    <NavigationPropertyBinding Path="_FurtherObjects" Target="Country"/>
+                </EntitySet>
+                <EntitySet Name="Country" EntityType="com.sap.gateway.srvd.scs2.ui_countrygovtp.v0001.CountryType">
+                    <NavigationPropertyBinding Path="_CountryText" Target="CountryText"/>
+                    <NavigationPropertyBinding Path="_Process" Target="ChangeProcess"/>
+                </EntitySet>
+                <EntitySet Name="CountryText" EntityType="com.sap.gateway.srvd.scs2.ui_countrygovtp.v0001.CountryTextType">
+                    <NavigationPropertyBinding Path="_Country" Target="Country"/>
+                </EntitySet>
+            </EntityContainer>
+            <Annotations Target="SAP__self.CountryTextType/MasterDataChangeProcess">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Process ID"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Master Data Change Process Identifier"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryTextType/MDChgProcessSrceSystem">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Source System"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryTextType/MDChgProcessSrceObject">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Source ID"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Master Data Consolidation: ID of a Source Objects"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryTextType/Language">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Language Key"/>
+                <Annotation Term="SAP__common.Heading" String="Language"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryTextType/MDChgProcessStep">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Step Number"/>
+                <Annotation Term="SAP__common.Heading" String="Process current Step Number"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Master Data Change Process Step Number"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryTextType/__EntityControl">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/CountryText">
+                <Annotation Term="SAP__capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="_Country"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>__EntityControl</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>__EntityControl</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Path="__EntityControl/Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Path="__EntityControl/Updatable"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.ChangeProcessType/MasterDataChangeProcess">
+                <Annotation Term="SAP__common.Label" String="ProcessID"/>
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Heading" String="Process ID"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Master Data Change Process Identifier"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ChangeProcessType/MDchgProcessStep">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__common.Label" String="Step Number"/>
+                <Annotation Term="SAP__common.Heading" String="Process current Step Number"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Master Data Change Process Step Number"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ChangeProcessType/MDChgProcessSrceSystem">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__common.Label" String="Source System"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ChangeProcessType/MDChgProcessSrceObject">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__common.Label" String="Source ID"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Master Data Consolidation: ID of a Source Objects"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ChangeProcessType/MDChgProcessDescription">
+                <Annotation Term="SAP__common.Label" String="Description"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Master Data Process Description"/>
+                <Annotation Term="SAP__common.Heading" String="Process Description"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ChangeProcessType/MDChgProcessTypeID">
+                <Annotation Term="SAP__common.Label" String="Process Template"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Master Data Process Template"/>
+                <Annotation Term="SAP__common.Text" Path="MDChgProcessTypeDesc">
+                    <Annotation Term="SAP__UI.TextArrangement" EnumMember="SAP__UI.TextArrangementType/TextOnly"/>
+                </Annotation>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/sap/i_mdchangeprocesstypevh/0001;ps='srvd-*scs2*ui_countrygovtp-0001';va='com.sap.gateway.srvd.scs2.ui_countrygovtp.v0001.et-*scs2*c_countrygovchgproctp.mdchgprocesstypeid'/$metadata</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+                <Annotation Term="SAP__common.Heading" String="Process Template"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ChangeProcessType/MDChgProcessTypeDesc">
+                <Annotation Term="SAP__common.Label" String="Template Description"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Template Description"/>
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Heading" String="Description"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ChangeProcessType/MDChgProcessGoal">
+                <Annotation Term="SAP__common.Label" String="Process Goal"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Master Data Process Goal"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/sap/c_masterdatachangeprocessgoal/0001;ps='srvd-*scs2*ui_countrygovtp-0001';va='com.sap.gateway.srvd.scs2.ui_countrygovtp.v0001.et-*scs2*c_countrygovchgproctp.mdchgprocessgoal'/$metadata</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__common.ValueListWithFixedValues"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__common.Heading" String="Process Goal"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ChangeProcessType/MDChgProcessStatus">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Process Status"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Master Data Change Process Status"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ChangeProcessType/MDChgProcessSrceObjectTypeCode">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__common.Label" String="Bus. Obj. Type"/>
+                <Annotation Term="SAP__common.Heading" String="Business Object Type Code"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Master Data Change Process Business Object Type Code"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ChangeProcessType/MDChgProcessRequestor">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Process Requestor"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Master Data Change Process Requestor"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ChangeProcessType/MDChgProcessCurrentStepNumber">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__common.Label" String="Step Number"/>
+                <Annotation Term="SAP__common.Heading" String="Process current Step Number"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Master Data Change Process Step Number"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ChangeProcessType/Country">
+                <Annotation Term="SAP__common.Label" String="Country"/>
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Heading" String="C/R"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Country/Region Key"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ChangeProcessType/MDChgProcessStepWrkflwOvrlDcsn">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Workflow Decision"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Decision made in a workflow assigned to a MD process step"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ChangeProcessType/MDChgProcessStepWrkflwSts">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Status"/>
+                <Annotation Term="SAP__common.QuickInfo" String="CP WF Integration: CP Workflow Status"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ChangeProcessType/NumberOfAttachments">
+                <Annotation Term="SAP__core.Computed"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ChangeProcessType/MDChgProcDspAttchIsAllowed">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Truth Value"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Truth Value: True/False"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ChangeProcessType/__EntityControl">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/ChangeProcess">
+                <Annotation Term="SAP__capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="_Country"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="_FurtherObjects"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>MDChgProcDspAttchIsAllowed</PropertyPath>
+                                <PropertyPath>__EntityControl</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>MDChgProcDspAttchIsAllowed</PropertyPath>
+                                <PropertyPath>__EntityControl</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Path="__EntityControl/Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Path="__EntityControl/Updatable"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryType/MasterDataChangeProcess">
+                <Annotation Term="SAP__common.Label" String="Process ID"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Process ID"/>
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Heading" String="Process ID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryType/MDChgProcessSrceSystem">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Source System"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryType/MDChgProcessSrceObject">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Source ID"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Master Data Consolidation: ID of a Source Objects"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryType/MDChgProcessStep">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Step Number"/>
+                <Annotation Term="SAP__common.Heading" String="Process current Step Number"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Master Data Change Process Step Number"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryType/Country">
+                <Annotation Term="SAP__common.Label" String="Country"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Heading" String="C/R"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Country/Region Key"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryType/CountryISOCode">
+                <Annotation Term="SAP__common.Label" String="Country ISO Code"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Heading" String="ISO Code"/>
+                <Annotation Term="SAP__common.QuickInfo" String="ISO Code of the Country/Region"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryType/CountryThreeLetterISOCode">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="ISO Code 3 Char"/>
+                <Annotation Term="SAP__common.Heading" String="ISO Code 3 Characters"/>
+                <Annotation Term="SAP__common.QuickInfo" String="ISO Country/Region Code 3 Characters"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryType/CountryThreeDigitISOCode">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="ISO Code Num. 3"/>
+                <Annotation Term="SAP__common.Heading" String="ISO Code Numeric 3-Characters"/>
+                <Annotation Term="SAP__common.QuickInfo" String="ISO Country/Region Code Numeric 3-Characters"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryType/CountryTextInLogonLanguage">
+                <Annotation Term="SAP__common.Label" String="Country Text"/>
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Heading" String="Country/Region Name"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Country/Region Name"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryType/__CreateByAssociationControl">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryType/__EntityControl">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryType/_CountryText">
+                <Annotation Term="SAP__common.Composition"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/Country">
+                <Annotation Term="SAP__capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="_CountryText"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Path="__CreateByAssociationControl/_CountryText"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="_Process"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Path="__CreateByAssociationControl/_Process"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>__CreateByAssociationControl</PropertyPath>
+                                <PropertyPath>__EntityControl</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>__CreateByAssociationControl</PropertyPath>
+                                <PropertyPath>__EntityControl</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Path="__EntityControl/Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Path="__EntityControl/Updatable"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryType/_Process">
+                <Annotation Term="SAP__common.Composition"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container">
+                <Annotation Term="SAP__aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="SAP__aggregation.RollupType/None"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+                <Annotation Term="SAP__capabilities.FilterFunctions">
+                    <Collection>
+                        <String>eq</String>
+                        <String>ne</String>
+                        <String>gt</String>
+                        <String>ge</String>
+                        <String>lt</String>
+                        <String>le</String>
+                        <String>and</String>
+                        <String>or</String>
+                        <String>contains</String>
+                        <String>startswith</String>
+                        <String>endswith</String>
+                        <String>any</String>
+                        <String>all</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SupportedFormats">
+                    <Collection>
+                        <String>application/json</String>
+                        <String>application/pdf</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__PDF.Features">
+                    <Record>
+                        <PropertyValue Property="DocumentDescriptionReference" String="../../../../default/iwbep/common/0001/$metadata"/>
+                        <PropertyValue Property="DocumentDescriptionCollection" String="MyDocumentDescriptions"/>
+                        <PropertyValue Property="ArchiveFormat" Bool="true"/>
+                        <PropertyValue Property="Border" Bool="true"/>
+                        <PropertyValue Property="CoverPage" Bool="true"/>
+                        <PropertyValue Property="FitToPage" Bool="true"/>
+                        <PropertyValue Property="FontName" Bool="true"/>
+                        <PropertyValue Property="FontSize" Bool="true"/>
+                        <PropertyValue Property="Margin" Bool="true"/>
+                        <PropertyValue Property="Padding" Bool="true"/>
+                        <PropertyValue Property="Signature" Bool="true"/>
+                        <PropertyValue Property="HeaderFooter" Bool="true"/>
+                        <PropertyValue Property="ResultSizeDefault" Int="20000"/>
+                        <PropertyValue Property="ResultSizeMaximum" Int="20000"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.KeyAsSegmentSupported"/>
+                <Annotation Term="SAP__capabilities.AsynchronousRequestsSupported"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ChangeProcessType">
+                <Annotation Term="SAP__UI.FieldGroup" Qualifier="HeaderDetails">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Value" Path="MasterDataChangeProcess"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Value" Path="Country"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.FieldGroup" Qualifier="ProcessData">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Description"/>
+                                    <PropertyValue Property="Value" Path="MDChgProcessDescription"/>
+                                    <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Label" String="Process Template"/>
+                                    <PropertyValue Property="Value" Path="MDChgProcessTypeID"/>
+                                    <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="Process"/>
+                        <PropertyValue Property="TypeNamePlural" String="Processes"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="SAP__UI.DataField">
+                                <PropertyValue Property="Label" String="Master Data Process"/>
+                                <PropertyValue Property="Value" Path="MasterDataChangeProcess"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="Description">
+                            <Record Type="SAP__UI.DataField">
+                                <PropertyValue Property="Label" String="Master Data Process"/>
+                                <PropertyValue Property="Value" Path="MasterDataChangeProcess"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.LineItem">
+                    <Collection>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="MasterDataChangeProcess"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="Country"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__UI.PresentationVariant">
+                    <Record>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="SAP__common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="MasterDataChangeProcess"/>
+                                    <PropertyValue Property="Descending" Bool="false"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="RequestAtLeast">
+                            <Collection>
+                                <PropertyPath>MDChgProcessSrceObjectTypeCode</PropertyPath>
+                                <PropertyPath>MDChgProcessGoal</PropertyPath>
+                                <PropertyPath>MDChgProcDspAttchIsAllowed</PropertyPath>
+                                <PropertyPath>MasterDataChangeProcess</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.Messages" Path="SAP__Messages"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryType">
+                <Annotation Term="SAP__UI.Facets">
+                    <Collection>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Details"/>
+                            <PropertyValue Property="ID" String="Fieldgroup"/>
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#Fieldgroup"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__UI.FieldGroup" Qualifier="HeaderDetails">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Value" Path="Country"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Value" Path="CountryISOCode"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Value" Path="CountryTextInLogonLanguage"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="Country"/>
+                        <PropertyValue Property="TypeNamePlural" String="Countries"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.LineItem">
+                    <Collection>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="Country"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="CountryISOCode"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="CountryTextInLogonLanguage"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__UI.PresentationVariant">
+                    <Record>
+                        <PropertyValue Property="MaxItems" Int="3"/>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="SAP__common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="Country"/>
+                                    <PropertyValue Property="Descending" Bool="true"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="RequestAtLeast">
+                            <Collection>
+                                <PropertyPath>Country</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.Messages" Path="SAP__Messages"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryTextType">
+                <Annotation Term="Communication.Contact">
+                    <Record/>
+                </Annotation>
+                <Annotation Term="SAP__common.Messages" Path="SAP__Messages"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ChangeProcessType/MDChgProcessLastStepIsFinished">
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__common.Label" String="Last Step Finished"/>
+                <Annotation Term="SAP__common.Heading" String="Process Last Step Finished Indicator"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Master Data Change Process Last Step Finished Indicator"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ChangeProcessType/_FurtherObjects">
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ChangeProcessType/MasterDataChangeProcessUUID">
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="NodeID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryTextType/CountryShortName">
+                <Annotation Term="SAP__common.Label" String="Country/Region Name"/>
+                <Annotation Term="SAP__common.Heading" String="Country/Reg. Name"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Name of Country/Region (Short)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryTextType/NationalityName">
+                <Annotation Term="SAP__common.Label" String="Nationality"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryTextType/CountryName">
+                <Annotation Term="SAP__common.Label" String="Country/Region Name"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryTextType/NationalityLongName">
+                <Annotation Term="SAP__common.Label" String="Nationality (Long)"/>
+                <Annotation Term="SAP__common.Heading" String="Nationality"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Nationality (Max. 50 Characters)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryTextType/__EntityControl/Deletable">
+                <Annotation Term="SAP__common.Label" String="Dyn. Method Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamic Method Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamic Method Property"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryTextType/__EntityControl/Updatable">
+                <Annotation Term="SAP__common.Label" String="Dyn. Method Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamic Method Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamic Method Property"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ChangeProcessType/MDChgProcessIsStarted">
+                <Annotation Term="SAP__common.Label" String="Process Started"/>
+                <Annotation Term="SAP__common.Heading" String="Process Started Indicator"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Master Data Change Process Started Indicator"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ChangeProcessType/MDChgProcessIsFinalized">
+                <Annotation Term="SAP__common.Label" String="Finalized"/>
+                <Annotation Term="SAP__common.Heading" String="Process Finalized Indicator"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Master Data Change Process Finalized Indicator"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ChangeProcessType/MDChgProcessIsErased">
+                <Annotation Term="SAP__common.Label" String="Process Erased"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ChangeProcessType/__EntityControl/Deletable">
+                <Annotation Term="SAP__common.Label" String="Dyn. Method Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamic Method Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamic Method Property"/>
+            </Annotations>
+            <Annotations Target="SAP__self.ChangeProcessType/__EntityControl/Updatable">
+                <Annotation Term="SAP__common.Label" String="Dyn. Method Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamic Method Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamic Method Property"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryType/IsEuropeanUnionMember">
+                <Annotation Term="SAP__common.Label" String="EU Member"/>
+                <Annotation Term="SAP__common.Heading" String="E"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Indicator: European Union Member?"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryType/__CreateByAssociationControl/_CountryText">
+                <Annotation Term="SAP__common.Label" String="Dynamic CbA-Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamic Create by Association Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamic Create via Association Control Property"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryType/__CreateByAssociationControl/_Process">
+                <Annotation Term="SAP__common.Label" String="Dynamic CbA-Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamic Create by Association Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamic Create via Association Control Property"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryType/__EntityControl/Deletable">
+                <Annotation Term="SAP__common.Label" String="Dyn. Method Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamic Method Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamic Method Property"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryType/__EntityControl/Updatable">
+                <Annotation Term="SAP__common.Label" String="Dyn. Method Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamic Method Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamic Method Property"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryCbAControl/_CountryText">
+                <Annotation Term="SAP__common.Label" String="Dynamic CbA-Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamic Create by Association Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamic Create via Association Control Property"/>
+            </Annotations>
+            <Annotations Target="SAP__self.CountryCbAControl/_Process">
+                <Annotation Term="SAP__common.Label" String="Dynamic CbA-Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamic Create by Association Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamic Create via Association Control Property"/>
+            </Annotations>
+            <Annotations Target="SAP__self.EntityControl/Deletable">
+                <Annotation Term="SAP__common.Label" String="Dyn. Method Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamic Method Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamic Method Property"/>
+            </Annotations>
+            <Annotations Target="SAP__self.EntityControl/Updatable">
+                <Annotation Term="SAP__common.Label" String="Dyn. Method Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamic Method Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamic Method Property"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
